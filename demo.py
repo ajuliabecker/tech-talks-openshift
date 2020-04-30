@@ -1,0 +1,1 @@
+print("TECH TALKS - Openshift")
