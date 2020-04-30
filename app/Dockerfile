@@ -2,14 +2,10 @@ FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y python python-pip
 
-WORKDIR /app
-
 RUN pip install flask
 
-COPY ./app
+COPY app.py /opt/
 
-ENTRYPOINT ["phyton"]
-
-CMD ["app.py"]
+ENTRYPOINT FLASK_APP=app.py flask run --host=0.0.0.0
 
 EXPOSE 5000
