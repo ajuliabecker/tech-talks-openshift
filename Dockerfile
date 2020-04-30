@@ -1,7 +1,9 @@
-FROM python:3
+FROM ubuntu:16.04
 
-ADD demo.py /
+RUN apt-get update && apt-get install -y python python-pip
 
-RUN pip install pystrich
+RUN pip install flask
 
-CMD [ "python", "demo.py"]
+copy demo.py
+
+ENTRYPOINT FLASK_APP=demo.py flask run --host=0.0.0.0
